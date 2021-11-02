@@ -1,3 +1,4 @@
+Licenca: Creative Commons Zero v1.0 Universal  
 Matej Hudiček  
 Verzija 1.0  
 Jezik: Hrvatski  
