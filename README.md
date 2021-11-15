@@ -1,5 +1,5 @@
 Licenca: Creative Commons Zero v1.0 Universal  
-Matej Hudiček  
+Autor: Matej Hudiček  
 Verzija 1.0  
 Jezik: Hrvatski  
 Vrsta podataka: podaci vremenskog niza(tlak)  
