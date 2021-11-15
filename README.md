@@ -2,6 +2,7 @@ Licenca: Creative Commons Zero v1.0 Universal
 Matej Hudiček  
 Verzija 1.0  
 Jezik: Hrvatski  
+Vrsta podataka: podaci vremenskog niza(tlak)  
 Atributi:  
   *  tlak - izmjereni tlak u hPa  
   *  vrijeme - vrijeme kad je mjerenje obavljeno  
