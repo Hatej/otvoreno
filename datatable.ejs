@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Web stranica za prikaz skupa podataka">
+        <meta name="keywords" content="JSON, CSV">
+        <meta name="author" content="Matej Hudiček">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+    </head>
+    <body>
+        <%- include(`partials/navbar`); %>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="th-sm">Tlak</th>
+                    <th class="th-sm">Vrijeme</th>
+                    <th class="th-sm">Datum</th>
+                    <th class="th-sm">Postaja</th>
+                    <th class="th-sm">Elevacija(m)</th>
+                    <th class="th-sm">Geografska dužina</th>
+                    <th class="th-sm">Geografska širina</th>
+                    <th class="th-sm">Mjesto</th>
+                    <th class="th-sm">Županija</th>
+                    <th class="th-sm">Mjeritelji</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let mjerenje of mjerenja) { %>
+                    <tr>
+                        <td><%= mjerenje.tlak %></td>
+                        <td><%= mjerenje.vrijeme %></td>
+                        <td><%= mjerenje.datum.toDateString(); %></td>
+                        <td><%= mjerenje.imepostaja %></td>
+                        <td><%= mjerenje.elevacija %></td>
+                        <td><%= mjerenje.geografska_duzina %></td>
+                        <td><%= mjerenje.geografska_sirina %></td>
+                        <td><%= mjerenje.mjesto %></td>
+                        <td><%= mjerenje.zupanija %></td>
+                        <td><%= mjerenje.mjeritelji %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <form action="/datatable" method="post" class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control input-sm" name="search" placeholder="Search">
+                <select class="custom-select" name="stupac">
+                    <option value="svi" selected>Sva polja (wildcard)</option>
+                    <option value="tlak">Tlak</option>
+                    <option value="vrijeme">Vrijeme</option>
+                    <option value="datum">Datum</option>
+                    <option value="imepostaja">Postaja</option>
+                    <option value="elevacija">Elevacija</option>
+                    <option value="geografska_duzina">Geografska dužina</option>
+                    <option value="geografska_sirina">Geografska širina</option>
+                    <option value="mjesto.nazmjesto">Mjesto</option>
+                    <option value="zupanija.nazzupanija">Županija</option>
+                    <option value="mjeritelji">Mjeritelji</option>
+                </select>
+                <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+        <br/>
+        Downloads:
+        <a class="btn btn-success" href="/download/customCSV">CSV</a>
+        <a class="btn btn-success" href="/download/customJSON">JSON</a>
+    </body>
+</html>
