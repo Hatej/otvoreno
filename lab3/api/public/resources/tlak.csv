@@ -1,0 +1,17 @@
+tlak,vrijeme,datum,mjeritelj,postaja,elevacija,geografska_duzina,geografska_sirina,mjesto,zupanija
+1003,07:17:25,2021-10-27,Petar Perić,GMP i AMP Prelog,150,46.335,16.61556,Prelog,Međimurska
+1003,07:17:25,2021-10-27,Ana Anić,GMP i AMP Prelog,150,46.335,16.61556,Prelog,Međimurska
+1001,11:34:12,2021-10-24,Marko Okreša,GMP i AMP Ogulin,323,45.265949,15.223881,Ogulin,Karlovačka
+1002,09:47:13,2021-11-01,Dundo Maruje,AMP Vis Hum,587,43.030833,16.114722,Borovik,Splitsko-dalmatinska
+1002,09:47:13,2021-11-01,Ivo Andrić,AMP Vis Hum,587,43.030833,16.114722,Borovik,Splitsko-dalmatinska
+1003,09:34:56,2021-10-26,Petar Lesar,GMP i AMP Daruvar,161,45.591389,17.21,Daruvar,Bjelovarsko-bilogorska
+1003,09:34:56,2021-10-26,Ivan Jurinić,GMP i AMP Daruvar,161,45.591389,17.21,Daruvar,Bjelovarsko-bilogorska
+1005,07:55:22,2021-10-27,Petar Lesar,GMP i AMP Daruvar,161,45.591389,17.21,Daruvar,Bjelovarsko-bilogorska
+1005,15:05:21,2021-10-27,Luka Vincetić,GMP Osijek - aerodrom,88,45.467778,18.806389,Osijek,Osječko-baranjska
+1003,08:32:28,2021-10-25,Luka Habuš,GMP i AMP Puntijarka,988,45.9075,15.968333,Zagreb,Grad Zagreb
+1005,17:23:02,2021-10-25,Luka Habuš,AMP Sv. Jure - Biokovo,1760,43.342222,17.052778,Makarska,Splitsko-dalmatinska
+1005,17:23:02,2021-10-25,Tatjana Bogomolec,AMP Sv. Jure - Biokovo,1760,43.342222,17.052778,Makarska,Splitsko-dalmatinska
+1005,12:15:46,2021-10-15,Leon Petković,GMP i AMP Gradište,97,45.159167,18.703611,Gradište,Vukovarsko-srijemska
+1005,12:15:46,2021-10-15,Filip Vadlja,GMP i AMP Gradište,97,45.159167,18.703611,Gradište,Vukovarsko-srijemska
+999,12:52:12,2021-10-20,Marko Bakač,GMP i AMP Gradište,97,45.159167,18.703611,Gradište,Vukovarsko-srijemska
+999,12:52:12,2021-10-20,Lovro Hozmec,GMP i AMP Gradište,97,45.159167,18.703611,Gradište,Vukovarsko-srijemska

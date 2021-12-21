@@ -1,0 +1,500 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API za mjerenja tlaka",
+    "description": "API za dohvaćanje podataka o mjerenjima tlaka",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/datatable": {
+      "description": "Operacije sa svim mjerenjima",
+      "get": {
+        "description": "Dohvaća sve podatke o mjerenjima",
+        "responses": {
+          "200": {
+            "description": "Uspješno dohvaćanje",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "tlak": {
+                        "description": "Izmjereni tlak u hPa",
+                        "type": "integer"
+                      },
+                      "vrijeme": {
+                        "description": "Vrijeme kad je mjerenje obavljeno",
+                        "type": "string"
+                      },
+                      "datum": {
+                        "description": "Datum kad je mjerenje obavljeno",
+                        "type": "string"
+                      },
+                      "elevacija": {
+                        "description": "Nadmorska visina mjesta na kojem je mjerenje obavljeno,",
+                        "type": "integer"
+                      },
+                      "mjesto": {
+                        "description": "Grad pod koji spada postaja",
+                        "type": "string"
+                      },
+                      "postaja": {
+                        "description": "Postaja koja je obavila mjerenje",
+                        "type": "string"
+                      },
+                      "mjeritelji": {
+                        "description": "Ljudi koji su obavili mjerenje",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "minItems": 1
+                        }
+                      },
+                      "geografska_duzina": {
+                        "description": "Geografska duzina postaje,",
+                        "type": "number"
+                      },
+                      "geografska_sirina": {
+                        "description": "Geografska sirina postaje,",
+                        "type": "number"
+                      },
+                      "zupanija": {
+                        "description": "Zupanija u kojoj je mjerenje obavljeno,",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno dohvaćanje",
+            "content": {
+              "text": {
+                "example": "Greška u dohvaćanju s baze"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Ubacuje mjerenje",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tlak",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Mjerenje tlaka"
+          },
+          {
+            "in": "query",
+            "name": "vrijeme",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Vrijeme mjerenja"
+          },
+          {
+            "in": "query",
+            "name": "datum",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Datum mjerenja"
+          },
+          {
+            "in": "query",
+            "name": "postaja",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Postaja mjerenje"
+          },
+          {
+            "in": "query",
+            "name": "mjeritelji",
+            "schema": {
+              "type": "object"
+            },
+            "description": "Mjeritelji"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Uspješno dodano u bazu",
+            "content": {
+              "text": {
+                "example": "Mjerenje dodano"
+              }
+            }
+          },
+          "400": {
+            "description": "Nije uspjelo dodavanje",
+            "content": {
+              "text": {
+                "example": "Greska u bazi."
+              }
+            }
+          },
+          "404": {
+            "description": "Mjeritelj ne postoji",
+            "content": {
+              "text": {
+                "example": "Mjeritelj ne postoji"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datatable/{id}": {
+      "description": "Operacije s pojedinim mjerenjima",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "schema": {
+            "type": "integer"
+          },
+          "description": "ID mjerenja",
+          "required": true
+        }
+      ],
+      "get": {
+        "description": "Dohvaća mjerenje",
+        "responses": {
+          "200": {
+            "description": "Uspješno dohvaćanje",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "properties": {
+                      "tlak": {
+                        "description": "Izmjereni tlak u hPa",
+                        "type": "integer"
+                      },
+                      "vrijeme": {
+                        "description": "Vrijeme kad je mjerenje obavljeno",
+                        "type": "string"
+                      },
+                      "datum": {
+                        "description": "Datum kad je mjerenje obavljeno",
+                        "type": "string"
+                      },
+                      "elevacija": {
+                        "description": "Nadmorska visina mjesta na kojem je mjerenje obavljeno,",
+                        "type": "integer"
+                      },
+                      "mjesto": {
+                        "description": "Grad pod koji spada postaja",
+                        "type": "string"
+                      },
+                      "postaja": {
+                        "description": "Postaja koja je obavila mjerenje",
+                        "type": "string"
+                      },
+                      "mjeritelji": {
+                        "description": "Ljudi koji su obavili mjerenje",
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "minItems": 1
+                        }
+                      },
+                      "geografska_duzina": {
+                        "description": "Geografska duzina postaje,",
+                        "type": "number"
+                      },
+                      "geografska_sirina": {
+                        "description": "Geografska sirina postaje,",
+                        "type": "number"
+                      },
+                      "zupanija": {
+                        "description": "Zupanija u kojoj je mjerenje obavljeno,",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Nije uspjelo dohvaćanje",
+            "content": {
+              "text": {
+                "example": "Greska u bazi"
+              }
+            }
+          },
+          "404": {
+            "description": "Nije uspjelo dohvaćanje",
+            "content": {
+              "text": {
+                "example": "Mjerenje ne postoji"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Mjenja vrijednosti postojećeg mjerenja",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "tlak",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Mjerenje tlaka"
+          },
+          {
+            "in": "query",
+            "name": "vrijeme",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Vrijeme mjerenja"
+          },
+          {
+            "in": "query",
+            "name": "datum",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Datum mjerenja"
+          },
+          {
+            "in": "query",
+            "name": "postaja",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Postaja mjerenje"
+          },
+          {
+            "in": "query",
+            "name": "mjeritelji",
+            "schema": {
+              "type": "object"
+            },
+            "description": "Mjeritelji"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Uspješno ažuriranje",
+            "content": {
+              "text": {
+                "example": "Mjerenje promijenjeno"
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno ažuriranje",
+            "content": {
+              "text": {
+                "example": "Nedefinirani parametri"
+              }
+            }
+          },
+          "404": {
+            "description": "Mjerenje ne postoji",
+            "content": {
+              "text": {
+                "example": "Mjerenje ne postoji"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Briše mjerenje iz baze",
+        "responses": {
+          "200": {
+            "description": "Uspješno brisanje",
+            "content": {
+              "text": {
+                "example": "Mjerenje obrisano"
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno brisanje",
+            "content": {
+              "text": {
+                "example": "Greška u bazi"
+              }
+            }
+          },
+          "404": {
+            "description": "Mjerenje ne postoji",
+            "content": {
+              "text": {
+                "example": "Mjerenje ne postoji"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/datatable/postaje": {
+      "description": "Operacije nad postajama",
+      "get": {
+        "description": "Dohvaćanje postaja",
+        "responses": {
+          "200": {
+            "description": "Uspješno dohvaćanje",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "imepostaja": {
+                        "description": "Postaja koja je obavila mjerenje",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "ID postaje",
+                        "type": "string"
+                      },
+                      "elevacija": {
+                        "description": "Nadmorska visina mjesta na kojem je mjerenje obavljeno,",
+                        "type": "integer"
+                      },
+                      "mjesto": {
+                        "description": "Grad pod koji spada postaja",
+                        "type": "string"
+                      },
+                      "geografska_duzina": {
+                        "description": "Geografska duzina postaje,",
+                        "type": "number"
+                      },
+                      "geografska_sirina": {
+                        "description": "Geografska sirina postaje,",
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno dohvaćanje"
+          }
+        }
+      }
+    },
+    "/osobe": {
+      "description": "Operacije nad osobama",
+      "get": {
+        "description": "Dohvaćanje osoba",
+        "responses": {
+          "200": {
+            "description": "Uspješno dohvaćanje",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "ime": {
+                        "description": "Ime osobe",
+                        "type": "string"
+                      },
+                      "prezime": {
+                        "description": "Prezime osobe",
+                        "type": "string"
+                      },
+                      "oib": {
+                        "description": "OIB osobe",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno dohvaćanje",
+            "content": {
+              "text": {
+                "example": "Greška u dohvaćanju s baze"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/osobe/{oib}": {
+      "description": "Operacije s pojedinim osobama",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "oib",
+          "schema": {
+            "type": "string"
+          },
+          "description": "OIB osobe",
+          "required": true
+        }
+      ],
+      "get": {
+        "description": "Dohvaćanje osobe",
+        "responses": {
+          "200": {
+            "description": "Uspješno dohvaćanje",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "items": {
+                    "properties": {
+                      "ime": {
+                        "description": "Ime osobe",
+                        "type": "string"
+                      },
+                      "prezime": {
+                        "description": "Prezime osobe",
+                        "type": "string"
+                      },
+                      "oib": {
+                        "description": "OIB osobe",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Neuspješno dohvaćanje",
+            "content": {
+              "text": {
+                "example": "Greška u bazi"
+              }
+            }
+          },
+          "404": {
+            "description": "Osoba ne postoji",
+            "content": {
+              "text": {
+                "example": "Osoba ne postoji"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
