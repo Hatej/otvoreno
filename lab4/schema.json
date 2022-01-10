@@ -1,0 +1,54 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "http://moje.com/schemas/myschema.json"
+	"title": "Tlak",
+	"description": "Mjerenje atmosferskog tlaka",
+	"type": "object",
+	"properties": {
+		"tlak": {
+			"description": "Izmjereni tlak u hPa",
+			"type": "integer"
+		},
+		"vrijeme": {
+			"description": "Vrijeme kad je mjerenje obavljeno",
+			"type": "string"
+		},
+		"datum": {
+			"description": "Datum kad je mjerenje obavljeno",
+			"type": "string"
+		},
+		"elevacija": {
+			"description": "Nadmorska visina mjesta na kojem je mjerenje obavljeno",
+			"type": "integer"
+		},
+		"mjesto": {
+			"description": "Grad pod koji spada postaja.",
+			"type": "string"
+		},
+		"postaja": {
+			"description": "Postaja koja je obavila mjerenje",
+			"type": "string"
+		},
+		"mjeritelji": {
+			"description": "Ljudi koji su obavili mjerenje",
+			"type": "array",
+			"items": {
+				"type": "object"
+			},
+			"minItems": 1
+		},
+		"geografska_duzina": {
+			"description": "Geografska duzina postaje",
+			"type": "number"
+		},
+		"geografska_sirina": {
+			"description": "Geografska sirina postaje",
+			"type": "number"
+		},
+		"zupanija": {
+			"description": "Zupanija u kojoj je mjerenje obavljeno",
+			"type": "string"
+		}
+	},
+	"required": ["tlak", "vrijeme", "datum", "elevacija", "mjesto", "postaja", "geografska_duzina", "geografska_sirina", "zupanija", "mjeritelji"]
+}

@@ -1,0 +1,11 @@
+COPY(
+	SELECT mjerenje.tlak, mjerenje.vrijeme, mjerenje.datum, (osoba.ime || ' ' || osoba.prezime) AS mjeritelj,
+			postaja.imepostaja AS postaja, postaja.elevacija, postaja.geografska_duzina, postaja.geografska_sirina, 
+			mjesto.nazmjesto AS mjesto, zupanija.nazzupanija AS zupanija
+	FROM mjerenje
+		JOIN mjeritelji ON mjerenje."mjerenjeID" = mjeritelji."idMjerenja"
+		JOIN osoba ON mjeritelji.mjeritelj = osoba.oib
+		JOIN postaja ON mjerenje.postaja = postaja.id
+		JOIN mjesto ON postaja.mjesto = mjesto.pbr
+		JOIN zupanija ON mjesto.sifzupanija = zupanija.sifzupanija
+) TO 'D:/tlak.csv' DELIMITER ',' CSV HEADER;

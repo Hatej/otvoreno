@@ -1,0 +1,20 @@
+COPY(
+	select row_to_json(t)
+	from (
+	  select tlak, vrijeme, datum,
+		(
+		  select array_to_json(array_agg(row_to_json(d)))
+		  from (
+			select ime, prezime
+			from osoba
+			  join mjeritelji ON osoba.oib = mjeritelji.mjeritelj
+			where "idMjerenja"=mjerenje."mjerenjeID"
+		  ) d
+		) as mjeritelji, postaja.imepostaja AS postaja, postaja.elevacija, postaja.geografska_duzina, postaja.geografska_sirina,
+			mjesto.nazmjesto AS mjesto, zupanija.nazzupanija AS zupanija
+	  from mjerenje
+		JOIN postaja ON postaja.id = mjerenje.postaja
+		JOIN mjesto ON mjesto.pbr = postaja.mjesto
+		JOIN zupanija ON mjesto.sifzupanija = zupanija.sifzupanija
+	) t
+) TO 'D:/tlak.json'
